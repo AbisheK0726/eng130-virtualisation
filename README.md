@@ -37,6 +37,8 @@
 
 ## Check if CPU has virtualization support
 
+Check if CPU has virtualization `Enabled` or `Disabled`:
+
 ![CPU](images/CPU_Check.png)
 
 ## How to enable Vagrant
@@ -45,7 +47,7 @@
 
 [Video Guide](https://www.youtube.com/watch?v=gmN6B_H9xj4)
 
-## Linux
+## Linux Basics
 
 - check internet connectivity `sudo apt-get update`
 - run upgrade `sudo apt-get upgrade -y`
