@@ -86,3 +86,12 @@ Check if CPU has virtualization `Enabled` or `Disabled`:
 `|` - Pipes are used to connect two commands together. The output of the first command is used as the input of the second command.
 
 Sort ps aux by name `ps aux | sort -k 11`
+
+### Install Nginx
+
+- Install Nginx `sudo apt-get install nginx`
+
+- Check if Nginx is installed `sudo service nginx status` or `sudo systemctl status nginx`
+- Start Nginx `sudo service nginx start` or `sudo systemctl start nginx`
+- Restart a process `sudo service nginx restart` or `sudo systemctl restart nginx`
+- Stop a process `sudo service nginx stop` or `sudo systemctl stop nginx`
