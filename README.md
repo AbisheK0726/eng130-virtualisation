@@ -74,7 +74,6 @@ Check if CPU has virtualization `Enabled` or `Disabled`:
 |---------|-------------|
 |`tail -n 3 test.txt`|print the last 3 line from a file|
 |`tail -n 1 test.txt`|print the last line from a file|
-|`|`|Pipes are used to connect two commands together. The output of the first command is used as the input of the second command.|
 |`>`|is used to redirect the output of a command to a file. If the file does not exist, it will be created. If the file exists, it will be overwritten.|
 |`>>`|is used to redirect the output of a command to a file. If the file does not exist, it will be created. If the file exists, the output will be appended to the end of the file.|
 |`grep`|is used to search for a string in a file.|
@@ -83,5 +82,7 @@ Check if CPU has virtualization `Enabled` or `Disabled`:
 |`fg`|is used to bring a background process to the foreground.|
 |`bg`|is used to send a process to the background.|
 |`kill`|is used to kill a process.|
+
+`|` - Pipes are used to connect two commands together. The output of the first command is used as the input of the second command.
 
 Sort ps aux by name `ps aux | sort -k 11`
