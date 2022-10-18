@@ -1,5 +1,7 @@
 # Virutualisation
 
+![VM](images/vmSetup.png)
+
 ## What is virtualisation & benefits of it
 
 Virtualisation is the process of creating a virtual (rather than actual) version of something, such as an operating system, a server, a storage device or network resources. A virtual machine (VM) is an emulation of a physical computer system. Virtual machines are based on computer architectures and provide functionality of a physical computer. Their implementations may involve specialized hardware, software, or a combination.
