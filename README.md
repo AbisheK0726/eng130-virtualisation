@@ -109,4 +109,3 @@ config.vm.synced_folder "src", "/var/www/html"
 ```
 
 Where the first argument is the path to the folder on the host and the second argument is the path to the folder on the guest machine.
-
