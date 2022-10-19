@@ -95,3 +95,18 @@ Sort ps aux by name `ps aux | sort -k 11`
 - Start Nginx `sudo service nginx start` or `sudo systemctl start nginx`
 - Restart a process `sudo service nginx restart` or `sudo systemctl restart nginx`
 - Stop a process `sudo service nginx stop` or `sudo systemctl stop nginx`
+
+## How to sync files between host and guest
+
+### Vagrant Synced Folders
+
+[Official Documentation](https://www.vagrantup.com/docs/synced-folders/basic_usage)
+
+To sync files between host and guest, we need to add the following to the Vagrantfile:
+
+```ruby
+config.vm.synced_folder "src", "/var/www/html"
+```
+
+Where the first argument is the path to the folder on the host and the second argument is the path to the folder on the guest machine.
+
