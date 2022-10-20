@@ -129,11 +129,52 @@ Example: `MY_VAR=hello`
 ### Steps to follow for db setup
 
 Step 1: Create 2 VM
-    1.1: Setup App in Machine 1
-    1.2: Setup MongoDB in Machine 2
 
-Step 2: Setup MongoDB with a vaild key
+- 1.1: Setup App in Machine 1
 
-Step 3: Ensure its running -3.1, mondogo.conf to allow access to everyone
+```bash
+Vagrant.configure("2") do |config|
+    config.vm.define "app" do |app|
+        app.vm.box = "ubuntu/bionic64"
+        app.vm.network "private_network", ip: "192.168.10.100"
+        app.vm.synced_folder "./app", "/home/vagrant/app"
+        app.vm.synced_folder "./environment", "/home/vagrant/environment"
+        app.vm.provision "shell", path: "provision.sh"
+    end
+```
 
-Step 4:
+- 1.2: Setup MongoDB in Machine 2
+
+```bash
+    config.vm.define "db" do |db|
+        db.vm.box = "ubuntu/bionic64"
+        db.vm.network "private_network", ip: "192.168.10.150"
+    end
+```
+
+Step 2: Setup MongoDB with a vaild key in Machine 2
+
+- 2.1: Create a key file - `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927`
+- 2.2: `echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list`
+- 2.3: Update and Upgrade - `sudo apt-get update -y && sudo apt-get upgrade -y`
+- 2.4: Install MongoDB - `sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20`
+- 2.5: Check if its running - `sudo systemctl status mongod`
+
+Step 3: Configure the mongod.conf to allow access to everyone
+
+- 3.2: Open the config file - `sudo nano /etc/mongod.conf`
+- 3.2: Check if its listening on `port: 27017`
+- 3.3: Change the config file to allow access to everyone by changing `bindIp` to `0.0.0.0`
+
+Step 4: Restart the service
+
+- 4.1: Restart - `sudo systemctl restart mongod`
+- 4.2: Enable - `sudo systemctl enable mongod`
+- 4.3: Status - `sudo systemctl status mongod`
+
+Step 5: Create a Env variable in the App VM to point to the MongoDB VM
+
+- 5.1: Add the variable to the `.bashrc` file and source it
+- 5.2: `export DB_HOST=mongodb://192.168.10.150:27017/posts`
+- 5.3: `source .bashrc`
+- 5.4: Check if the variable is set `echo $DB_HOST`

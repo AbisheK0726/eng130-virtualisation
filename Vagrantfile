@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.define "db" do |db|
-        db.vm.define = "ubuntu/bionic64"
+        db.vm.box = "ubuntu/bionic64"
         db.vm.network "private_network", ip: "192.168.10.150"
     end
 end

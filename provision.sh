@@ -16,7 +16,7 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 
 # INSTALL NODEJS
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install nodejs -y
 
 # INSTALL PM2
