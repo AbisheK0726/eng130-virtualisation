@@ -68,6 +68,7 @@ Check if CPU has virtualization `Enabled` or `Disabled`:
 - kill a process `kill <PID>`
 - kill a process by name `killall <processname>`
 
+
 ### Task
 
 | Command | Description |
@@ -96,8 +97,6 @@ Sort ps aux by name `ps aux | sort -k 11`
 - Restart a process `sudo service nginx restart` or `sudo systemctl restart nginx`
 - Stop a process `sudo service nginx stop` or `sudo systemctl stop nginx`
 
-## How to sync files between host and guest
-
 ### Vagrant Synced Folders
 
 [Official Documentation](https://www.vagrantup.com/docs/synced-folders/basic_usage)
@@ -109,3 +108,32 @@ config.vm.synced_folder "src", "/var/www/html"
 ```
 
 Where the first argument is the path to the folder on the host and the second argument is the path to the folder on the guest machine.
+
+## Environment Variables (Linux)
+
+Environment variables are variables that are set in the environment in which a process runs. They are used to store information that is used by multiple processes. Environment variables are set in the shell and are available to all processes that are started by that shell.
+
+However these will be lost when you close the shell. To make them permanent, you need to add them to the shell configuration file.
+
+Systax: `<variable>=<value>`
+Example: `MY_VAR=hello`
+
+## How Make an environment Variable Presistent
+
+- Open the file `sudo nano .bashrc`
+- Add the variable `export MY_VAR=hello`
+- Save the file `ctrl + x` and `y`
+- Close the terminal and open a new one
+- Check if the variable is set `echo $MY_VAR`
+
+### Steps to follow for db setup
+
+Step 1: Create 2 VM
+    1.1: Setup App in Machine 1
+    1.2: Setup MongoDB in Machine 2
+
+Step 2: Setup MongoDB with a vaild key
+
+Step 3: Ensure its running -3.1, mondogo.conf to allow access to everyone
+
+Step 4:
